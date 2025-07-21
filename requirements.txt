@@ -1,5 +1,6 @@
 GitPython
 python-dotenv
+mistralai
 mistral
 fastapi
 pydantic
