@@ -100,7 +100,7 @@ class MultiLanguageApiAnalyzerService:
         """
         if not os.path.isabs(repo_name):
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            repo_name = os.path.join(current_dir,"data\\", repo_name)
+            repo_name = os.path.join(current_dir,"data", repo_name)
 
         if not os.path.exists(repo_name):
             raise ValueError(f"Directory path does not exist: {repo_name}")
