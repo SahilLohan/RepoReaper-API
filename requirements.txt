@@ -1,0 +1,6 @@
+GitPython
+python-dotenv
+mistral
+fastapi
+pydantic
+uvicorn
