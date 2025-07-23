@@ -276,8 +276,6 @@ that fully describes every endpoint, model, and service in the JSON schema below
 
 JSON schema:
 {json_payload}
-
-if the JSON schema don't have anything related api then return a markdown stating "Sorry, can't generate documentation for this repository as it does not contain code related to API."
 """
 
         response = self.client.chat.complete(
