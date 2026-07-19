@@ -5,11 +5,22 @@ from pathlib import Path
 import os
 import re
 from typing import List, Dict, Optional, Set, Tuple
+from urllib.parse import urlparse
 
 class GitCloneService:
     def __init__(self, base_folder: str = "data"):
         self.base_folder = Path(__file__).parent / base_folder
         self.base_folder.mkdir(exist_ok=True)
+
+
+
+    def get_repo_name(repo_url):
+        path_parts = urlparse(repo_url).path.strip("/").split("/")
+
+        username = path_parts[-2]
+        repo_name = path_parts[-1].replace(".git", "")
+
+        return f"{username}_{repo_name}"
 
     def clone_repo(self, repo_url: str) -> dict:
         """
@@ -19,7 +30,7 @@ class GitCloneService:
           - commit_sha: str
         Raises RuntimeError on failure.
         """
-        repo_name = repo_url.rstrip("/").split("/")[-1].replace(".git", "")
+        repo_name = self.get_repo_name(repo_url)
         dest = self.base_folder / repo_name
 
         try:
@@ -140,7 +151,12 @@ class MultiLanguageApiAnalyzerService:
         return api_languages
     
     def get_repo_path(self, repo_url:str)->str:
-        return repo_url.rstrip("/").split("/")[-1].replace(".git", "")
+        path_parts = urlparse(repo_url).path.strip("/").split("/")
+
+        username = path_parts[-2]
+        repo_name = path_parts[-1].replace(".git", "")
+
+        return f"{username}_{repo_name}"
 
     def clone_repo_and_give_language_choices(self, repo_url: str):
         """
