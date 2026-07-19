@@ -30,7 +30,7 @@ class GitCloneService:
           - commit_sha: str
         Raises RuntimeError on failure.
         """
-        repo_name = self.get_repo_name(repo_url)
+        repo_name = get_repo_name(repo_url)
         dest = self.base_folder / repo_name
 
         try:
