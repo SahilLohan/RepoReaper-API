@@ -155,7 +155,7 @@ class MultiLanguageApiAnalyzerService:
 
         username = path_parts[-2]
         repo_name = path_parts[-1].replace(".git", "")
-
+        print(f"username : {username} , repo_name : {repo_name}")
         return f"{username}_{repo_name}"
 
     def clone_repo_and_give_language_choices(self, repo_url: str):
