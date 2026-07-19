@@ -2,7 +2,7 @@ import os
 import json
 import time
 import re
-from mistralai import Mistral
+from mistralai.client import Mistral
 from services.repo_analysis_service import MultiLanguageApiAnalyzerService
 from dotenv import load_dotenv
 load_dotenv()
