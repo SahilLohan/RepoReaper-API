@@ -13,8 +13,11 @@ class GitCloneService:
         self.base_folder.mkdir(exist_ok=True)
 
 
-
-    def get_repo_name(repo_url):
+    @staticmethod
+    def get_repo_name(repo_url: str) -> str:
+        """
+        Extracts the repository name from a GitHub URL.
+        """
         path_parts = urlparse(repo_url).path.strip("/").split("/")
 
         username = path_parts[-2]
